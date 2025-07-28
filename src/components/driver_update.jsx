@@ -26,7 +26,7 @@ export default function DriverUpdate() {
         const fetchDriver = async () => {
             const access = localStorage.getItem('access')
             try {
-                const response = await axios.get(`http://127.0.0.1:8000/api/drivers/${driverID}/`, {
+                const response = await api.get(`api/drivers/${driverID}/`, {
                     headers: {
                         'Authorization': `Bearer ${access}`
                     }
@@ -50,7 +50,7 @@ export default function DriverUpdate() {
                 if (error.response?.status === 401) {
                     const newAccess = await refreshAccessToken()
                     if (newAccess) {
-                        const response = await axios.get(`http://127.0.0.0.1:8000/api/drivers/${driverID}`, {
+                        const response = await api.get(`api/drivers/${driverID}`, {
                             headers: {
                                 'Authorization': `Bearer ${newAccess}`
                             }

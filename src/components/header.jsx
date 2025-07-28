@@ -11,6 +11,9 @@ export default function Header() {
         window.location.href = '/login_page';
         localStorage.removeItem('access');
         localStorage.removeItem('refresh');
+        localStorage.removeItem('user');
+        localStorage.removeItem('vehicles');
+        localStorage.removeItem('driver');
     };
     const user =  JSON.parse(localStorage.getItem('user'));
     const role = user?.role    
