@@ -8,9 +8,9 @@ import "../css/header.css"
 
 export default function Header() {
     const handleLogout = () => {
+        window.location.href = '/login_page';
         localStorage.removeItem('access');
         localStorage.removeItem('refresh');
-        window.location.href = '/login_page';
     };
     const user =  JSON.parse(localStorage.getItem('user'));
     const role = user?.role    

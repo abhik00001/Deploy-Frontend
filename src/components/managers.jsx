@@ -85,7 +85,7 @@ export default function Managers() {
                                 return (
 
                                     <Card key={index} style={{ width: '20rem', marginBottom: "10px" }}>
-                                        <Card.Img variant="top" src={`${manager.profile_image}`} />
+                                        <Card.Img variant="top" src={`${MyBaseUrl}${manager.profile_image}`} />
                                         <Card.Body>
                                             <Card.Title style={{ textTransform: "capitalize", textAlign: "center" }}>{manager.first_name} {manager.last_name}</Card.Title>
                                             <Card.Text>
