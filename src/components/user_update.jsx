@@ -25,7 +25,7 @@ export default function Update_User() {
         const access = localStorage.getItem('access')
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/api/fetchUser/${userId}`, {
+                const response = await api.get(`api/fetchUser/${userId}`, {
                     headers: {
                         Authorization: `Bearer ${access}`
                     }
@@ -46,7 +46,7 @@ export default function Update_User() {
                 if (error.response?.status === 401) {
                     const newToken = await refreshAccessToken()
                     if (newToken) {
-                        const retry = await axios.get(`http://localhost:8000/api/fetchUser/${userId}`, {
+                        const retry = await api.get(`api/fetchUser/${userId}`, {
                             headers: {
                                 Authorization: `Bearer ${access}`
                             }
