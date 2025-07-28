@@ -24,6 +24,7 @@ function LoginPage() {
             localStorage.setItem('access', res.data.access)
             localStorage.setItem('refresh', res.data.refresh)
             localStorage.setItem('user', JSON.stringify(res.data.user));
+            localStorage.setItem('vehicles', JSON.stringify(res.data.vehicles));
             navigate("/home")
         }
         catch (err) {

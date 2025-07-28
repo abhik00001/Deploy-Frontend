@@ -56,7 +56,7 @@ export default function RegisterUser() {
             })
             // data = response.data
             console.log(response.data.data?.id)
-            const v = localStorage.setItem('vehicles', JSON.stringify(response.data.vehicle))
+            // const v = localStorage.setItem('vehicles', JSON.stringify(response.data.vehicle))
             const d = localStorage.setItem('driver', JSON.stringify(response.data.data))
             console.log(d);
 
