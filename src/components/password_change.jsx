@@ -30,7 +30,7 @@ export default function PasswordChange() {
                 }
             })
            
-            navigate("/")
+            navigate("/home")
         } catch (error) {
             if (error.response?.status === 401) {
                 const newAccess = await refreshAccessToken()
@@ -40,7 +40,7 @@ export default function PasswordChange() {
                             'Authorization': `Bearer ${newAccess}`,
                         }
                     })
-                    navigate("/")
+                    navigate("/home")
                 }else{
                     console.log('Failed to refresh token')
                     localStorage.removeItem('access')
