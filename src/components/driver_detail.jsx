@@ -60,31 +60,35 @@ export default function DriverDetail() {
 
     const deletehandle = async (e) => {
         const access = localStorage.getItem('access')
-        try {
-            const response = await api.delete(`api/delete_driverUser/${driverID}`, {
-                headers: {
-                    'Authorization': `Bearer ${access}`,
-                }
-            });
-            navigate('/home/drivers')
-        } catch (error) {
-            console.error("API error:", error);
-            if (error.response?.status == 401) {
-                const newAccess = await refreshAccessToken();
-                if (newAccess) {
-                    const retry = await api.delete(`api/delete_driverUser/${driverID}`, {
-                        headers: {
-                            'Authorization': `Bearer ${newAccess}`
-                        }
-                    });
-                    navigate('/home/drivers')
-
-                } else {
-                    console.log('Access token is invalid')
-                    localStorage.removeItem('access')
-                    navigate('/')
+        if (window.confirm("Are you sure , you want to delete this driver?")) {
+            try {
+                const response = await api.delete(`api/delete_driverUser/${driverID}`, {
+                    headers: {
+                        'Authorization': `Bearer ${access}`,
+                    }
+                });
+                navigate('/home/drivers')
+            } catch (error) {
+                console.error("API error:", error);
+                if (error.response?.status == 401) {
+                    const newAccess = await refreshAccessToken();
+                    if (newAccess) {
+                        const retry = await api.delete(`api/delete_driverUser/${driverID}`, {
+                            headers: {
+                                'Authorization': `Bearer ${newAccess}`
+                            }
+                        });
+                        navigate('/home/drivers')
+    
+                    } else {
+                        console.log('Access token is invalid')
+                        localStorage.removeItem('access')
+                        navigate('/')
+                    }
                 }
             }
+        }else{
+            console.log('cancelled')
         }
     }
     // console.log(users);
